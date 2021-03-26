@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+.forms{
+    display: flex;
+    flex: auto;
+    justify-content: space-around;
+
+}
+fieldset {
+    margin: 2em 0;
+    padding: 1em 2em;
+    border: solid 1px black;
+    border-radius: 6px;
+    min-width: 200px;
+}
+
+input, select {
+    padding: 3px;
+    display:block;
+}
+
+#printout{
+    text-align: center;
+}
+
+#printout h1 {
+    margin-bottom: 20px;
+}
+
+#printout h4 {
+    margin-bottom: 2px;
+    margin-top: 15px;
+    
+}
+#printout ul li {
+    list-style-type: square;
+    list-style-position: inside;
+    
+    
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo and Ninjas</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/css.css' %}">
+</head>
+<body>
+    <div class="forms">
+        <div class="form" id="add_dojo">
+            <fieldset>
+                <legend>
+                    <h1>Add Dojo</h1>
+                </legend>
+                <form action="add_dojo" method="POST">
+                    {% csrf_token %}
+                    Name: <input type="text" name="dojo_name">
+                    City: <input type="text" name="dojo_city">
+                    State: <input type="text"name="dojo_state">
+                    <input type="submit" value="Add Dojo">
+                </form>
+            </fieldset>
+        </div>
+        <div class="form" id="add_ninja">
+            <fieldset>
+                <legend>
+                    <h1>Add Ninja</h1>
+                </legend>
+                <form action="add_ninja" method="POST">
+                    {% csrf_token %}
+                    Name: <input type="text" name="ninja_name">
+                    Dojo: <select name="dojo">
+                        {% for location in dojos %}
+                            <option value="{{location.id}}">{{location.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="Add Ninja">
+                </form>
+            </fieldset>
+        </div>
+    </div>
+        <hr>
+        <div id="printout">
+            <h1>All the Dojos</h1>
+            {% for dojo in dojos %}
+            <ul>
+                <h4>{{dojo.name}}</h4>
+                {% for ninja in dojo.ninjas.all %} 
+                <li>{{ninja.name}}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </div>
+</body>
+</html>
